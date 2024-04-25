@@ -1,0 +1,90 @@
+CREATE DATABASE CircuitCentral;
+GO
+
+USE CircuitCentral;
+GO
+
+CREATE TABLE Address (
+  id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+  street VARCHAR(255) NOT NULL,
+  city VARCHAR(255) NOT NULL,
+  postal_code VARCHAR(255) NOT NULL,
+  country VARCHAR(255) NOT NULL
+);
+GO
+
+CREATE TABLE Supplier (
+  id INT NOT NULL IDENTITY(7000,1) PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email_address VARCHAR(255) NOT NULL,
+  phone_number VARCHAR(255) NOT NULL,
+  address_id INT NOT NULL,
+  CONSTRAINT FK_Supplier_Address FOREIGN KEY (address_id) REFERENCES Address (id)
+);
+GO
+
+CREATE TABLE Customer (
+  id INT NOT NULL IDENTITY(1000,1) PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email_address VARCHAR(255) NOT NULL,
+  [password] VARCHAR(255) NOT NULL,
+  phone_number VARCHAR(20) NOT NULL,
+  address_id INT NOT NULL,
+  CONSTRAINT FK_Customer_Address FOREIGN KEY (address_id) REFERENCES [Address] (id)
+);
+GO
+
+CREATE TABLE Staff (
+  id INT NOT NULL IDENTITY(500,1) PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email_address VARCHAR(255) NOT NULL,
+  [password] VARCHAR(255) NOT NULL,
+  phone_number VARCHAR(20) NOT NULL,
+  department VARCHAR(255) NOT NULL,
+  address_id INT NOT NULL,
+  CONSTRAINT FK_Staff_Address FOREIGN KEY (address_id) REFERENCES [Address] (id)
+);
+GO
+
+CREATE TABLE Product (
+  id INT NOT NULL IDENTITY(3000,1) PRIMARY KEY,
+  supplier_id INT NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  [description] VARCHAR(255) NOT NULL,
+  category VARCHAR(255) NOT NULL,
+  price DECIMAL(10,2) NOT NULL,
+  [stock] INT NOT NULL,
+[image_link] VARCHAR(255),
+  CONSTRAINT FK_Product_Supplier FOREIGN KEY (supplier_id) REFERENCES Supplier (id)
+);
+GO
+
+CREATE TABLE [Transaction] (
+  id INT NOT NULL IDENTITY(9000,1) PRIMARY KEY,
+  total_amount DECIMAL(10,2) NOT NULL,
+  payment_method NVARCHAR(20) NOT NULL,
+  [date] DATE NOT NULL,
+  [status] NVARCHAR(20) NOT NULL
+);
+GO
+
+CREATE TABLE [Order] (
+  id INT NOT NULL IDENTITY(5000,1) PRIMARY KEY,
+  customer_id INT NOT NULL,
+  transaction_id INT NOT NULL,
+  [date] DATE NOT NULL,
+  [status] NVARCHAR(20) NOT NULL,
+  CONSTRAINT FK_Order_Customer FOREIGN KEY (customer_id) REFERENCES Customer (id),
+  CONSTRAINT FK_Order_Transaction FOREIGN KEY (transaction_id) REFERENCES [Transaction] (id)
+);
+GO
+
+CREATE TABLE OrderDetail (
+  id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+order_id INT NOT NULL,
+  product_id INT NOT NULL,
+  unit_price INT NOT NULL,
+  quantity INT NOT NULL,
+  CONSTRAINT FK_OrderDetail_Product FOREIGN KEY (product_id) REFERENCES Product (id),
+CONSTRAINT FK_OrderDetail_Order FOREIGN KEY (order_id) REFERENCES [Order] (id)
+);
