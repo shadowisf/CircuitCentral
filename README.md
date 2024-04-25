@@ -1,6 +1,3 @@
-# About
-CircuitCentral is an e-commerce management system that uses Microsoft SQL Server, WinForms, and C# that mainly focuses on CRUD operations.
-
 # How to Use
 Before starting the application, there are a few things that needs to be configured.
 1. Create a local database named **"CircuitCentral"**, or name of your preference, inside Microsoft SQL Server Management Studio (SMSS).
