@@ -636,7 +636,7 @@ namespace e_commerce_management_system
             p_imageBOX.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             p_imageBOX.Location = new Point(268, 220);
             p_imageBOX.Name = "p_imageBOX";
-            p_imageBOX.Size = new Size(195, 22);
+            p_imageBOX.Size = new Size(157, 22);
             p_imageBOX.TabIndex = 101;
             p_imageBOX.TabStop = false;
             // 
@@ -646,9 +646,9 @@ namespace e_commerce_management_system
             p_imageLABEL.Font = new Font("Verdana", 12F, FontStyle.Bold);
             p_imageLABEL.Location = new Point(268, 199);
             p_imageLABEL.Name = "p_imageLABEL";
-            p_imageLABEL.Size = new Size(65, 18);
+            p_imageLABEL.Size = new Size(106, 18);
             p_imageLABEL.TabIndex = 102;
-            p_imageLABEL.Text = "Image";
+            p_imageLABEL.Text = "Image URL";
             // 
             // p_uploadBUTTON
             // 
@@ -656,11 +656,11 @@ namespace e_commerce_management_system
             p_uploadBUTTON.FlatStyle = FlatStyle.Flat;
             p_uploadBUTTON.Font = new Font("Verdana", 9F, FontStyle.Bold);
             p_uploadBUTTON.ForeColor = Color.White;
-            p_uploadBUTTON.Location = new Point(469, 220);
+            p_uploadBUTTON.Location = new Point(431, 220);
             p_uploadBUTTON.Name = "p_uploadBUTTON";
-            p_uploadBUTTON.Size = new Size(111, 25);
+            p_uploadBUTTON.Size = new Size(149, 25);
             p_uploadBUTTON.TabIndex = 2;
-            p_uploadBUTTON.Text = "Upload Image";
+            p_uploadBUTTON.Text = "Upload Local Image";
             p_uploadBUTTON.UseVisualStyleBackColor = false;
             p_uploadBUTTON.Click += p_uploadBUTTON_Click;
             // 
