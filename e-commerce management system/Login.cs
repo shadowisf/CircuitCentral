@@ -1,5 +1,5 @@
+using System.Data;
 using System.Data.SqlClient;
-using System.Net.Mail;
 
 namespace e_commerce_management_system
 {
@@ -43,15 +43,17 @@ namespace e_commerce_management_system
                     Constant.user_id = 0;
                     functions.customerForm(this);
                 }
-                else
+                else if (result != 0)
                 {
                     // if customer details are correct, assign user id as customer id and proceed to product management
                     // note that user id is project-wide and is used on every forms especially when creating orders
 
                     Constant.user_id = result;
                     functions.productForm(this);
-
-                    
+                }
+                else
+                {
+                    MessageBox.Show("ERROR: incorrect credentials or user does not exist!");
                 }
                 connection.Close();
             }

@@ -1,6 +1,5 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 
 namespace e_commerce_management_system
 {
@@ -153,7 +152,7 @@ namespace e_commerce_management_system
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.Message);
+                MessageBox.Show("ERROR: product exists in an order!");
             }
             showProducts();
         }
@@ -172,21 +171,29 @@ namespace e_commerce_management_system
             }
             else
             {
-                decimal price = decimal.Parse(p_priceBOX.Text);
-                int stock = int.Parse(p_stockBOX.Text);
-                int supplier_id = functions.extractInt(p_supplierBOX.Text);
-
-                var details = new ProductDetails
+                try
                 {
-                    name = p_nameBOX.Text,
-                    category = p_categoryBOX.Text,
-                    description = p_descriptionBOX.Text,
-                    price = price,
-                    stock = stock,
-                    image_link = p_imageBOX.Text
-                };
+                    decimal price = decimal.Parse(p_priceBOX.Text);
+                    int stock = int.Parse(p_stockBOX.Text);
 
-                createProduct(supplier_id, details);
+                    int supplier_id = functions.extractInt(p_supplierBOX.Text);
+
+                    var details = new ProductDetails
+                    {
+                        name = p_nameBOX.Text,
+                        category = p_categoryBOX.Text,
+                        description = p_descriptionBOX.Text,
+                        price = price,
+                        stock = stock,
+                        image_link = p_imageBOX.Text
+                    };
+
+                    createProduct(supplier_id, details);
+                }
+                catch (Exception x)
+                {
+                    MessageBox.Show("ERROR: incorrect value for price or stock!");
+                }
             }
             showProducts();
         }
