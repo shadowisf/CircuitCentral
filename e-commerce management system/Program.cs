@@ -1,8 +1,5 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using System.Drawing.Text;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace e_commerce_management_system
 {
@@ -18,94 +15,12 @@ namespace e_commerce_management_system
 
 
 
-    // user id class
-    public static class Constant
-    {
-        public static int user_id
-        {
-            get;
-            set;
-
-        } = 0;
-    }
-
-
-
-    // customer details class
-    public class CustomerDetails
-    {
-        public string name { get; set; }
-        public string email_address { get; set; }
-        public string password { get; set; }
-        public string phone_number { get; set; }
-        public string street { get; set; }
-        public string city { get; set; }
-        public string postal_code { get; set; }
-        public string country { get; set; }
-    }
-
-
-
-
-    // staff details class
-    public class StaffDetails
-    {
-        public string name { get; set; }
-        public string email_address { get; set; }
-        public string password { get; set; }
-        public string phone_number { get; set; }
-        public string department { get; set; }
-        public string street { get; set; }
-        public string city { get; set; }
-        public string postal_code { get; set; }
-        public string country { get; set; }
-    }
-
-
-
-    // supplier details class
-    public class SupplierDetails
-    {
-        public string name { get; set; }
-        public string email_address { get; set; }
-        public string phone_number { get; set; }
-        public string street { get; set; }
-        public string city { get; set; }
-        public string postal_code { get; set; }
-        public string country { get; set; }
-    }
-
-
-
-    // product details class
-    public class ProductDetails
-    {
-        public string name { get; set; }
-        public string image_link { get; set; }
-        public string category { get; set; }
-        public string description { get; set; }
-        public decimal price { get; set; }
-        public int stock { get; set; }
-        public int supplier_id { get; set; }
-    }
-
-
-
-    // order details class
-    public class TransactionDetails
-    {
-        public DateTime date { get; set; }
-        public string transaction_status { get; set; }
-        public string order_status { get; set; }
-        public string payment_method { get; set; }
-    }
-
-
-
     public class Function
     {
+        // INSERT CONNECTION STRING INSDE CONSTANT VARIABLE BELOW
         public const string ConnectionString = "Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=CircuitCentral;Integrated Security=True;Encrypt=False";
 
+        // CHANGE ADMIN CREDENTIALS IF NEEDED
         public const string adminEmail = "admin";
         public const string adminPassword = "admin";
 
@@ -391,5 +306,89 @@ namespace e_commerce_management_system
             newForm.Show();
             currentForm.Hide();
         }
+    }
+
+
+
+    // user id class
+    public static class Constant
+    {
+        public static int user_id
+        {
+            get;
+            set;
+
+        } = 0;
+    }
+
+
+
+    // customer details class
+    public class CustomerDetails
+    {
+        public string name { get; set; }
+        public string email_address { get; set; }
+        public string password { get; set; }
+        public string phone_number { get; set; }
+        public string street { get; set; }
+        public string city { get; set; }
+        public string postal_code { get; set; }
+        public string country { get; set; }
+    }
+
+
+
+
+    // staff details class
+    public class StaffDetails
+    {
+        public string name { get; set; }
+        public string email_address { get; set; }
+        public string password { get; set; }
+        public string phone_number { get; set; }
+        public string department { get; set; }
+        public string street { get; set; }
+        public string city { get; set; }
+        public string postal_code { get; set; }
+        public string country { get; set; }
+    }
+
+
+
+    // supplier details class
+    public class SupplierDetails
+    {
+        public string name { get; set; }
+        public string email_address { get; set; }
+        public string phone_number { get; set; }
+        public string street { get; set; }
+        public string city { get; set; }
+        public string postal_code { get; set; }
+        public string country { get; set; }
+    }
+
+
+
+    // product details class
+    public class ProductDetails
+    {
+        public string name { get; set; }
+        public string image_link { get; set; }
+        public string category { get; set; }
+        public string description { get; set; }
+        public decimal price { get; set; }
+        public int stock { get; set; }
+        public int supplier_id { get; set; }
+    }
+
+
+
+    // order details class
+    public class TransactionDetails
+    {
+        public DateTime date { get; set; }
+        public string transaction_status { get; set; }
+        public string order_status { get; set; }
+        public string payment_method { get; set; }
     }
 }

@@ -146,7 +146,7 @@ namespace e_commerce_management_system
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.Message);
+                MessageBox.Show("ERROR: customer has existing orders!");
             }
             showCustomers();
         }

@@ -1,6 +1,5 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace e_commerce_management_system
 {
@@ -145,7 +144,7 @@ namespace e_commerce_management_system
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.Message);
+                MessageBox.Show("ERROR: supplier has existing products!");
             }
             showSupplier();
         }
