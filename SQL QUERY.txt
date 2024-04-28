@@ -131,11 +131,11 @@ VALUES
 
 INSERT INTO Product (supplier_id, name, [description], category, price, [stock], image_link)
 VALUES
-(7001, 'iPhone 15 Pro Max', '(256 GB) - Natural Titanium', 'smartphones & mobile devices', 4499.99, 85, 'C:\\Users\\les\\Downloads\\LANDrop\\apple-iphone-15-pro-max.jpg'),
-(7004, 'Sony WH-1000XM4', 'Wireless Noise Cancelling Bluetooth Over-Ear Headphones With Speak To Chat Function And Mic For Phone Call, Black, Universal', 'audio & headphones', 799.99, 92, 'C:\\Users\\les\\Downloads\\LANDrop\\41xvg7mwu3L._AC_SL1000_.jpg'),
-(7000, 'Microsoft Xbox Series X', '1TB Game Console - Black', 'gaming & accessories', 1599.99, 63, 'C:\\Users\\les\\Downloads\\LANDrop\\51ojzJk77qL._AC_SL1500_.jpg'),
-(7003, 'Dell XPS 9370-7040', '4K HD Touchscreen Display Laptop, Intel Core i7, 13.3 Inch, 1TB SSD, 16GB RAM, Intel UHD Graphics 620, Windows 10, Eng KB, Silver', 'computers & laptops', 3199.99, 12, 'C:\\Users\\les\\Downloads\\LANDrop\\71AgLjviG3L._AC_SL1280_.jpg'),
-(7002, 'ASUS RT-AX86U Pro', 'Dual Band WiFi 6 Extendable Gaming Router, 2.5G Port, Gaming Port, Mobile Game Mode, Port Forwarding, Subscription-free Network Security, VPN, AiMesh Compatible', 'networking & accessories', 899.99, 87, 'C:\\Users\\les\\Downloads\\LANDrop\\51kl5DawhuL._AC_SL1350_.jpg');
+(7001, 'iPhone 15 Pro Max', '(256 GB) - Natural Titanium', 'smartphones & mobile devices', 4499.99, 85, 'https://m.media-amazon.com/images/I/81YSmKnlijL._AC_SL1500_.jpg'),
+(7004, 'Sony WH-1000XM4', 'Wireless Noise Cancelling Bluetooth Over-Ear Headphones With Speak To Chat Function And Mic For Phone Call, Black, Universal', 'audio & headphones', 799.99, 92, 'https://m.media-amazon.com/images/I/41xvg7mwu3L._AC_SL1000_.jpg'),
+(7000, 'Microsoft Xbox Series X', '1TB Game Console - Black', 'gaming & accessories', 1599.99, 63, 'https://m.media-amazon.com/images/I/51ojzJk77qL._AC_SL1500_.jpg'),
+(7003, 'Dell XPS 9370-7040', '4K HD Touchscreen Display Laptop, Intel Core i7, 13.3 Inch, 1TB SSD, 16GB RAM, Intel UHD Graphics 620, Windows 10, Eng KB, Silver', 'computers & laptops', 3199.99, 12, 'https://m.media-amazon.com/images/I/71AgLjviG3L._AC_SL1280_.jpg'),
+(7002, 'ASUS RT-AX86U Pro', 'Dual Band WiFi 6 Extendable Gaming Router, 2.5G Port, Gaming Port, Mobile Game Mode, Port Forwarding, Subscription-free Network Security, VPN, AiMesh Compatible', 'networking & accessories', 899.99, 87, 'https://m.media-amazon.com/images/I/71SISFYdqDL._AC_SL1500_.jpg');
 
 INSERT INTO [Transaction] (total_amount, payment_method, [date], [status])
 VALUES
