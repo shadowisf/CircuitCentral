@@ -636,7 +636,6 @@ namespace e_commerce_management_system
             p_imageBOX.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             p_imageBOX.Location = new Point(268, 220);
             p_imageBOX.Name = "p_imageBOX";
-            p_imageBOX.ReadOnly = true;
             p_imageBOX.Size = new Size(195, 22);
             p_imageBOX.TabIndex = 101;
             p_imageBOX.TabStop = false;

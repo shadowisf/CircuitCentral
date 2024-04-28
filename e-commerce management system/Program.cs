@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
+using System.Net;
 
 namespace e_commerce_management_system
 {
@@ -145,20 +146,45 @@ namespace e_commerce_management_system
         // get data with image method
         public DataTable getDataWithImage(string query)
         {
-            SqlConnection connection = new SqlConnection(ConnectionString);
-            SqlCommand command = new SqlCommand(query, connection);
-            SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable datatable = new DataTable();
 
-            adapter.Fill(datatable);
-
-            datatable.Columns.Add("image", Type.GetType("System.Byte[]"));
-            foreach (DataRow row in datatable.Rows)
+            try
             {
-                row["image"] = File.ReadAllBytes(row["image_link"].ToString());
+                SqlConnection connection = new SqlConnection(ConnectionString);
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                
+
+                adapter.Fill(datatable);
+
+                datatable.Columns.Add("image", Type.GetType("System.Byte[]"));
+
+                foreach (DataRow row in datatable.Rows)
+                {
+                    string imageUrl = row["image_link"].ToString();
+                    byte[] imageData;
+
+                    if (Uri.IsWellFormedUriString(imageUrl, UriKind.Absolute))
+                    {
+                        WebClient webClient = new WebClient();
+                        imageData = webClient.DownloadData(imageUrl);
+                    }
+                    else
+                    {
+                        imageData = File.ReadAllBytes(imageUrl);
+                    }
+
+                    row["image"] = imageData;
+                }
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("ERROR: product image not found!\n\n"+x.Message);
             }
             return datatable;
+
         }
+
 
 
 
