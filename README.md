@@ -1,17 +1,55 @@
-# How to Use
+# SETUP
 Before starting the application, there are a few things that needs to be configured.
-1. Create a local database named **"CircuitCentral"**, or name of your preference, inside Microsoft SQL Server Management Studio (SMSS).
+1. Install Visual Studio, with WinForms and .NET 8.0.
+2. Install Microsoft SQL Server
+3. Clone or download this repository and open the solution file (the CircuitCentral.sln file) in Visual Studio.
+4. Create a local database named **"CircuitCentral"**, inside Microsoft SQL Server Management Studio (SMSS).
 - A .txt file that has all necessary queries to create the database is provided inside the repository or pasted inside here.
 - Inside SMSS, just click "New Query" and copy and paste the SQL queries I have provided and click Execute.
-2. Connect the database via Server Explorer in Visual Studio.
+5. Connect the database via Server Explorer in Visual Studio.
 - If you are facing any connection errors, try to set Encrypt to Optional (False) and disable Trust Server Certificate (this is not recommended but since we are only working on a local database, it is passable.)
-3. Copy the connecting string from properties of database
-4. Paste the connection string on the public constant variable named **"ConnectionString"**. This is found under **public class Function** inside Program.cs
-5. Optional: set admin login details to your preference. This is found right under ConnetionString constant variable inside Program.cs
-6. Run the program
-7. If logging in with admin priviledges, type "admin" for both email address and password. If first time logging in, register first.
+6. Copy the connecting string from properties of database
+7. Paste the connection string on the public constant variable named **"ConnectionString"**. This is found under **public class Function** inside Program.cs
+8. Optional: set admin login details to your preference. This is found right under ConnetionString constant variable inside Program.cs
+9. Run the project
+10. If logging in with admin priviledges, type "admin" for both email address and password. If first time logging in, register first.
+
+&emsp;
+
+# FORMS
+### LOGIN
+- Existing users can login, with email address and password, via this form.
+- Credential checking is implemented in this form wherein it checks in customer records
+
+### REGISTER
+- New users can register via this form by entering necessary details.
+- Note that registration automatically creates a customer record.
+
+### CUSTOMER MANAGEMENT
+- With admin priviledges, the user can perform CRUD operations on customer records via this form.
+- With normal priviledges, this form does not exist.
+
+### STAFF MANAGEMENT
+- With admin priviledges, the user can perform CRUD operations on staff records via this form.
+- With normal priviledges, this form does not exist.
+
+### SUPPLIER MANAGEMENT
+- With admin priviledges, the user can perform CRUD operations on supplier records via this form.
+- With normal priviledges, this form does not exist.
+
+### PRODUCT MANAGEMENT
+- With admin priviledges, the user can perform CRUD operations on product records via this form.
+- Note that product records require an image.
+- With normal priviledges, the user can only view product records via this form.
+
+### ORDER MANAGMENT
+- With admin priviledges, the user can perform CRUD operations on order records via this form. The user can also view all customer's orders.
+- With normal priviledges, the user can only create orders and view their own orders.
+
+&emsp;
 
 # SQL
+Below is the SQL query provided. I have provided pre-existing records for testing. If you want to start blank copy the query only until OrderDetail table creation.
 ```
 CREATE DATABASE CircuitCentral;
 GO
@@ -103,4 +141,75 @@ order_id INT NOT NULL,
   CONSTRAINT FK_OrderDetail_Product FOREIGN KEY (product_id) REFERENCES Product (id),
 CONSTRAINT FK_OrderDetail_Order FOREIGN KEY (order_id) REFERENCES [Order] (id)
 );
+GO
+
+
+
+-- COPY ONLY UNTIL HERE IF YOU WANT A DATABASE WITHOUT ANY RECORDS
+
+
+
+INSERT INTO Address (street, city, postal_code, country)
+VALUES
+('123 Main St', 'Anytown', '12345', 'USA'),
+('456 Elm St', 'Otherville', '67890', 'UK'),
+('789 Oak St', 'Sometown', '13579', 'Canada'),
+('321 Pine St', 'Anothercity', '24680', 'Australia'),
+('555 Maple St', 'Yourtown', '98765', 'Germany');
+
+INSERT INTO Supplier (name, email_address, phone_number, address_id)
+VALUES
+('TechCorp', 'techcorp@example.com', '123-456-7890', 1),
+('ElectroTech', 'electrotech@example.com', '987-654-3210', 2),
+('GadgetMasters', 'gadgetmasters@example.com', '555-555-5555', 3),
+('CircuitWorld', 'circuitworld@example.com', '111-222-3333', 4),
+('FutureElectronics', 'future@example.com', '999-888-7777', 5);
+
+INSERT INTO Customer (name, email_address, [password], phone_number, address_id)
+VALUES
+('John Doe', 'john.doe@example.com', 'password123', '111-111-1111', 2),
+('Jane Smith', 'jane.smith@example.com', 'password456', '222-222-2222', 3),
+('Alice Johnson', 'alice.johnson@example.com', 'password789', '333-333-3333', 4),
+('Bob Brown', 'bob.brown@example.com', 'passwordabc', '444-444-4444', 5),
+('Emily Davis', 'emily.davis@example.com', 'passworddef', '555-555-5555', 1),
+('Mark Wilson', 'mark.wilson@example.com', 'passwordghi', '666-666-6666', 3),
+('Sarah Lee', 'sarah.lee@example.com', 'passwordjkl', '777-777-7777', 4),
+('David Taylor', 'david.taylor@example.com', 'passwordmno', '888-888-8888', 5),
+('Emma Clark', 'emma.clark@example.com', 'passwordpqr', '999-999-9999', 1),
+('James Martinez', 'james.martinez@example.com', 'passwordstu', '000-000-0000', 2);
+
+INSERT INTO Staff (name, email_address, [password], phone_number, department, address_id)
+VALUES
+('Michael Johnson', 'michael.johnson@example.com', 'staffpass1', '111-222-3333', 'Sales & Marketing', 1),
+('Jennifer Williams', 'jennifer.williams@example.com', 'staffpass2', '222-333-4444', 'Sales & Marketing', 2),
+('Christopher Brown', 'christopher.brown@example.com', 'staffpass3', '333-444-5555', 'Technology & IT', 3),
+('Amanda Jones', 'amanda.jones@example.com', 'staffpass4', '444-555-6666', 'Operations & Logistics', 4),
+('Matthew Garcia', 'matthew.garcia@example.com', 'staffpass5', '555-666-7777', 'Product Management', 5);
+
+INSERT INTO Product (supplier_id, name, [description], category, price, [stock], image_link)
+VALUES
+(7001, 'iPhone 15 Pro Max', '(256 GB) - Natural Titanium', 'smartphones & mobile devices', 4499.99, 85, 'C:\\Users\\les\\Downloads\\LANDrop\\apple-iphone-15-pro-max.jpg'),
+(7004, 'Sony WH-1000XM4', 'Wireless Noise Cancelling Bluetooth Over-Ear Headphones With Speak To Chat Function And Mic For Phone Call, Black, Universal', 'audio & headphones', 799.99, 92, 'C:\\Users\\les\\Downloads\\LANDrop\\41xvg7mwu3L._AC_SL1000_.jpg'),
+(7000, 'Microsoft Xbox Series X', '1TB Game Console - Black', 'gaming & accessories', 1599.99, 63, 'C:\\Users\\les\\Downloads\\LANDrop\\51ojzJk77qL._AC_SL1500_.jpg'),
+(7003, 'Dell XPS 9370-7040', '4K HD Touchscreen Display Laptop, Intel Core i7, 13.3 Inch, 1TB SSD, 16GB RAM, Intel UHD Graphics 620, Windows 10, Eng KB, Silver', 'computers & laptops', 3199.99, 12, 'C:\\Users\\les\\Downloads\\LANDrop\\71AgLjviG3L._AC_SL1280_.jpg'),
+(7002, 'ASUS RT-AX86U Pro', 'Dual Band WiFi 6 Extendable Gaming Router, 2.5G Port, Gaming Port, Mobile Game Mode, Port Forwarding, Subscription-free Network Security, VPN, AiMesh Compatible', 'networking & accessories', 899.99, 87, 'C:\\Users\\les\\Downloads\\LANDrop\\51kl5DawhuL._AC_SL1350_.jpg');
+
+INSERT INTO [Transaction] (total_amount, payment_method, [date], [status])
+VALUES
+(4499.99, 'cash', '2024-04-28', 'pending'),
+(3999.98, 'card', '2024-04-28', 'failed'),
+(2699.97, 'bank', '2024-04-28', 'success');
+
+INSERT INTO [Order] (customer_id, transaction_id, [date], [status])
+VALUES
+(1004, 9000, '2024-04-28', 'pending'),
+(1005, 9001, '2024-04-28', 'cancelled'),
+(1009, 9002, '2024-04-28', 'delivered');
+
+INSERT INTO OrderDetail (order_id, product_id, unit_price, quantity)
+VALUES
+(5000, 3000, 4499, 1),
+(5001, 3001, 799, 1),
+(5001, 3003, 3199, 1),
+(5002, 3004, 899, 3);
 ```
