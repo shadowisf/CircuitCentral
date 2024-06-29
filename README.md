@@ -1,8 +1,9 @@
-# CircuitCentral
-
+# CIRCUITCENTRAL
 ![ImageCircuitCentral1](https://github.com/shadowisf/CircuitCentral/assets/97739695/79e29d50-e889-43cf-846f-2726add067a7)
 
-## Setup
+&emsp;
+
+## SETUP
 Before starting the application, there are a few things that needs to be configured.
 1. Install Visual Studio, with WinForms and .NET 8.0.
 2. Install Microsoft SQL Server
