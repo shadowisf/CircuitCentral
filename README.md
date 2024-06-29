@@ -1,4 +1,8 @@
-# SETUP
+# CircuitCentral
+
+![ImageCircuitCentral1](https://github.com/shadowisf/CircuitCentral/assets/97739695/79e29d50-e889-43cf-846f-2726add067a7)
+
+## Setup
 Before starting the application, there are a few things that needs to be configured.
 1. Install Visual Studio, with WinForms and .NET 8.0.
 2. Install Microsoft SQL Server
@@ -16,39 +20,7 @@ Before starting the application, there are a few things that needs to be configu
 
 &emsp;
 
-# FORMS
-### LOGIN
-- Existing users can login, with email address and password, via this form.
-- Credential checking is implemented in this form wherein it checks in customer records
-
-### REGISTER
-- New users can register via this form by entering necessary details.
-- Note that registration automatically creates a customer record.
-
-### CUSTOMER MANAGEMENT
-- With admin priviledges, the user can perform CRUD operations on customer records via this form.
-- With normal priviledges, this form does not exist.
-
-### STAFF MANAGEMENT
-- With admin priviledges, the user can perform CRUD operations on staff records via this form.
-- With normal priviledges, this form does not exist.
-
-### SUPPLIER MANAGEMENT
-- With admin priviledges, the user can perform CRUD operations on supplier records via this form.
-- With normal priviledges, this form does not exist.
-
-### PRODUCT MANAGEMENT
-- With admin priviledges, the user can perform CRUD operations on product records via this form.
-- Note that product records require an image.
-- With normal priviledges, the user can only view product records via this form.
-
-### ORDER MANAGMENT
-- With admin priviledges, the user can perform CRUD operations on order records via this form. The user can also view all customer's orders.
-- With normal priviledges, the user can only create orders and view their own orders.
-
-&emsp;
-
-# SQL
+## SQL
 Below is the SQL query provided. I have provided pre-existing records for testing. If you want to start blank copy the query only until OrderDetail table creation.
 ```
 CREATE DATABASE CircuitCentral;
